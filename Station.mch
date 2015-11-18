@@ -4,5 +4,12 @@
  */
 MACHINE
     Station
+ 
+INCLUDES
+    Reservoir, 
+    Fluide, 
     
+    PompeAlimentation, 
+    PompeCirculation   
+ 
 END

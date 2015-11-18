@@ -5,6 +5,9 @@
 MACHINE
     Fluide
     
+SEES
+    PompeCirculation    
+    
 CONSTANTS 
     // Seuils
     OO4MT1, // bas
@@ -14,20 +17,25 @@ PROPERTIES
       OO4MT1 : INT & OO4MT1 = 50
     & OO4MT2 : INT & OO4MT2 = 35
     
+VARIABLES
+    temperature
+    
 INVARIANT
-    liquidTemp : INT & liquidTemp >= OO4MT1 & liquidTemp <= OO4MT2
+    temperature : INT & temperature >= OO4MT1 & temperature <= OO4MT2
     
 INITIALISATION
-    liquidTemp := 40
+    temperature := 40
 
 OPERATIONS
-    decreaseLiquidTemp = 
-    PRE
+    diminuerTemp = 
+    PRE circuActive = TRUE
     THEN
-    END
+        temperature := temperature + 1
+    END;
     
-    increaseLiquidTemp = 
-    PRE
+    augmenterTemp = 
+    PRE circuActive = FALSE
     THEN
+        temperature := temperature - 1        
     END
 END

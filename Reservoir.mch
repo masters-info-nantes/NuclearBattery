@@ -5,6 +5,8 @@
 MACHINE
     Reservoir
 
+SEES PompeAlimentation, PompeCirculation
+
 CONSTANTS
     // Seuils    
     OO1SN, // bas
@@ -15,22 +17,24 @@ PROPERTIES
     & OO2SN : INT & OO2SN = 130
    
 VARIABLES
-    tankLevel
+    niveau
     
 INVARIANT
-    tankLevel : INT & tankLevel >= OO1SN & tankLevel <= OO2SN
+    niveau : INT & niveau >= OO1SN & niveau <= OO2SN
     
 INITIALISATION
-    tankLevel := 80   
+    niveau := 80   
     
 OPERATIONS
-    decreasetTankLevel = 
-    PRE
+    augmenterNiveau = 
+    PRE niveau < OO2SN & alimActive = TRUE
     THEN
-    END
+        niveau := niveau + 1
+    END;
     
-    increaseTankLevel = 
-    PRE
+    diminuerNiveau = 
+    PRE niveau > OO1SN & alimActive = TRUE
     THEN
+        niveau := niveau - 1
     END        
 END

@@ -5,13 +5,28 @@
 MACHINE
     PompeCirculation
 
+SEES Reservoir, Fluide
+
 VARIABLES 
-    active
+    circuActive
     
 INVARIANT
-    active : BOOL
+    circuActive : BOOL
     
 INITIALISATION
-    active := FALSE
+    circuActive := FALSE
+   
+OPERATIONS   
+    activerCircu =
+    PRE circuActive = FALSE
+    THEN
+        circuActive := TRUE
+    END;
+    
+    desactiverCircu =
+    PRE circuActive = TRUE
+    THEN
+        circuActive := FALSE
+    END 
     
 END
