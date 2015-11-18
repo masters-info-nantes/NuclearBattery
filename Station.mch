@@ -43,4 +43,11 @@ INITIALISATION
     
     || circulationPump := FALSE
     || alimentationPump := FALSE
+    
+OPERATIONS
+
+    increaseLiquidTemp =
+    BEGIN
+        liquidTemp := liquidTemp - 8        
+    END    
 END
