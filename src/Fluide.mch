@@ -4,9 +4,10 @@
  */
 MACHINE
     Fluide
-    
+/*    
 SEES
     PompeCirculation    
+*/
     
 CONSTANTS 
     // Seuils
