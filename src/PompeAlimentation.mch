@@ -5,29 +5,27 @@
 MACHINE
     PompeAlimentation
 
-/*
-SEES Reservoir
-*/
+// SEES Reservoir
 
 VARIABLES 
-    alimActive
+    pompeAlimActive
     
 INVARIANT
-    alimActive : BOOL
+    pompeAlimActive : BOOL
     
 INITIALISATION
-    alimActive := FALSE
+    pompeAlimActive := FALSE
 
 OPERATIONS
-    activerAlim =
-    PRE alimActive = FALSE
+    activerPompeAlim =
+    PRE pompeAlimActive = FALSE
     THEN
-        alimActive := TRUE
+        pompeAlimActive := TRUE
     END;
     
-    desactiverAlim =
-    PRE alimActive = TRUE
+    desactiverPompeAlim =
+    PRE pompeAlimActive = TRUE
     THEN
-        alimActive := FALSE
+        pompeAlimActive := FALSE
     END    
 END

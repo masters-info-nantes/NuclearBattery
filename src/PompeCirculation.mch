@@ -5,30 +5,28 @@
 MACHINE
     PompeCirculation
 
-/*
-SEES Reservoir, Fluide
-*/
+// SEES Reservoir, Fluide
 
 VARIABLES 
-    circuActive
+    pompeCircuActive
     
 INVARIANT
-    circuActive : BOOL
+    pompeCircuActive : BOOL
     
 INITIALISATION
-    circuActive := FALSE
+    pompeCircuActive := FALSE
    
 OPERATIONS   
-    activerCircu =
-    PRE circuActive = FALSE
+    activerPompeCircu =
+    PRE pompeCircuActive = FALSE
     THEN
-        circuActive := TRUE
+        pompeCircuActive := TRUE
     END;
     
-    desactiverCircu =
-    PRE circuActive = TRUE
+    desactiverPompeCircu =
+    PRE pompeCircuActive = TRUE
     THEN
-        circuActive := FALSE
+        pompeCircuActive := FALSE
     END 
     
 END
