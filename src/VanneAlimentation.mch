@@ -15,6 +15,12 @@ INITIALISATION
     vanneAlimActive := FALSE
 
 OPERATIONS
+    rr <-- getVanneAlimActive = 
+    BEGIN
+        rr := vanneAlimActive
+    END;
+        
+    /*
     activerVanneAlim =
     PRE vanneAlimActive = FALSE
     THEN
@@ -26,4 +32,5 @@ OPERATIONS
     THEN
         vanneAlimActive := FALSE
     END
+    */
 END

@@ -26,15 +26,17 @@ INITIALISATION
     temperature := 40
 
 OPERATIONS
+    /*
     diminuerTemp = 
-    PRE circuActive = TRUE
+    PRE pompeCircuActive = TRUE
     THEN
         temperature := temperature + 1
     END;
     
     augmenterTemp = 
-    PRE circuActive = FALSE
+    PRE pompeCircuActive = FALSE
     THEN
         temperature := temperature - 1        
     END
+    */
 END

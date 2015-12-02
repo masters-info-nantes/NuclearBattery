@@ -9,6 +9,26 @@ INCLUDES
     Reservoir, 
     Fluide, 
     
-    PompeAlimentation, 
-    PompeCirculation   
+    VanneAlimentation,
+    PompeAlimentation,
+    PompeCirculation
+    
+    
+PROMOTES
+    getVanneAlimActive,
+    getTourneurLumineux,
+    activerPompeAlim
+    
+     
+OPERATIONS
+     ordreEnclenchementPompeAlimentation =
+     
+     BEGIN
+         activerPompeAlim
+     END
+     
+         
+     
+
+    
 END

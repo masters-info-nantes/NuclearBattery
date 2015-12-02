@@ -8,24 +8,33 @@ MACHINE
 // SEES Reservoir
 
 VARIABLES 
-    pompeAlimActive
+    pompeAlimActive, tourneurLumineux
     
 INVARIANT
     pompeAlimActive : BOOL
+    & tourneurLumineux : BOOL
     
 INITIALISATION
     pompeAlimActive := FALSE
+    || tourneurLumineux := FALSE
 
 OPERATIONS
     activerPompeAlim =
-    PRE pompeAlimActive = FALSE
+    PRE tourneurLumineux = TRUE
     THEN
         pompeAlimActive := TRUE
     END;
     
+    rr <-- getTourneurLumineux =
+    BEGIN
+        rr := tourneurLumineux
+    END;
+    
+    /*
     desactiverPompeAlim =
     PRE pompeAlimActive = TRUE
     THEN
         pompeAlimActive := FALSE
-    END    
+    END
+    */
 END

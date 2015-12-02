@@ -27,6 +27,6 @@ OPERATIONS
     PRE pompeCircuActive = TRUE
     THEN
         pompeCircuActive := FALSE
-    END 
+    END
     
 END

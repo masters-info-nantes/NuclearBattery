@@ -25,16 +25,5 @@ INVARIANT
 INITIALISATION
     niveau := 80   
     
-OPERATIONS
-    augmenterNiveau = 
-    PRE niveau < OO2SN & alimActive = TRUE
-    THEN
-        niveau := niveau + 1
-    END;
-    
-    diminuerNiveau = 
-    PRE niveau > OO1SN & alimActive = TRUE
-    THEN
-        niveau := niveau - 1
-    END        
+       
 END
