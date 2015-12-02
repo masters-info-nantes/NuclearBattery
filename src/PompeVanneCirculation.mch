@@ -16,7 +16,7 @@ PROMOTES
 
 OPERATIONS
     activerPompeCirculation = 
-    PRE ( isActiverPP = TRUE or isActiverPR = TRUE )  & not ( isDesactiverPP = TRUE or isDesactiverPR = TRUE or getVanneCircuActive = TRUE )
+    PRE ( isActiverPP = TRUE or isActiverPR = TRUE )  & not ( isActiverPP = FALSE or isActiverPR = FALSE or getVanneCircuActive = TRUE )
     THEN
         activerPompeCircu
     END;

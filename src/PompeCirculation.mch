@@ -9,35 +9,20 @@ MACHINE
 
 VARIABLES 
     pompeCircuActive,
-    desactiverPP,
-    desactiverPR,
     activerPP,
     activerPR
     
 INVARIANT
     pompeCircuActive : BOOL
-    & desactiverPP : BOOL
-    & desactiverPR : BOOL
     & activerPP: BOOL
     & activerPR: BOOL
     
 INITIALISATION
     pompeCircuActive := FALSE
-    || desactiverPP := FALSE
-    || desactiverPR := FALSE
     || activerPP := FALSE
     || activerPR := FALSE
    
 OPERATIONS
-    
-    rr <-- isDesactiverPP =
-    BEGIN
-        rr := desactiverPP        
-    END;
-    rr <-- isDesactiverPR =
-    BEGIN
-        rr := desactiverPR        
-    END;
 
     rr <-- isActiverPP =
     BEGIN
