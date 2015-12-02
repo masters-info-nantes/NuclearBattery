@@ -23,18 +23,18 @@ INITIALISATION
     
 OPERATIONS
     FluideFroid =
-    PRE temperature <= 40 
+    IF temperature <= 40 
     THEN 
         OO4MT := FALSE
     END;
  
-    FluideChuad =
-    PRE temperature >= 100 
+    FluideChaud =
+    IF temperature >= 100 
     THEN 
         OO4MT := TRUE
     END;
     
-    rr <-- isFluideChuad =
+    rr <-- isFluideChaud =
     BEGIN
         rr := OO4MT
     END;

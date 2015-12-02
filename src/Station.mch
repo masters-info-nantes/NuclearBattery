@@ -44,14 +44,14 @@ OPERATIONS
      // 1
      // ALARM Chaud + indisponible
      alarmeTropChaud =
-     IF (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChuad = TRUE
+     IF (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChaud = TRUE
      THEN
         alarmeChaleur := TRUE
      END;    
     
      // 3
      excesEau =
-     IF getPompeCircuActive = TRUE & isFluideChuad = FALSE
+     IF getPompeCircuActive = TRUE & isFluideChaud = FALSE
      THEN
         alarmeInondation := TRUE
      END;    

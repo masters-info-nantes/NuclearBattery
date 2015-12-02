@@ -24,25 +24,25 @@ INITIALISATION
     
 OPERATIONS
     ReservoirMin =
-    PRE niveau <= 20 
+    IF niveau <= 20 
     THEN 
         OO1SN := TRUE
     END;
  
     ReservoirPlusMin =
-    PRE niveau > 20
+    IF niveau > 20
     THEN 
         OO1SN := FALSE
     END;
 
     ReservoirMax =
-    PRE niveau >= 100
+    IF niveau >= 100
     THEN 
         OO2SN := TRUE
     END;
     
     ReservoirMoinsMax =
-    PRE niveau < 100
+    IF niveau < 100
     THEN 
         OO2SN := FALSE
     END;
