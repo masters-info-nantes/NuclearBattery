@@ -15,6 +15,15 @@ INITIALISATION
     vanneCircuActive := FALSE
 
 OPERATIONS
+    rr <-- getVanneCircuActive =
+    BEGIN
+        rr := vanneCircuActive
+    END;
+    
+    verouillerVanneCircu = 
+        vanneCircuActive := FALSE
+        
+    /*
     activerVanneCircu =
     PRE vanneCircuActive = FALSE
     THEN
@@ -26,4 +35,5 @@ OPERATIONS
     THEN
         vanneCircuActive := FALSE
     END
+    */
 END

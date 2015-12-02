@@ -9,26 +9,45 @@ INCLUDES
     Reservoir, 
     Fluide, 
     
-    VanneAlimentation,
-    PompeAlimentation,
-    PompeCirculation
+    PompeVanneAlimentation,
+    PompeCirculation,
+    VanneCirculation
     
     
 PROMOTES
-    getVanneAlimActive,
-    getTourneurLumineux,
-    activerPompeAlim
+    activerPompeAlimentation,
+    desactiverPompeAlimentation,
     
+    activerPompeCircu,
+    desactiverPompeCircu,
+    getVanneCircuActive,
+    verouillerVanneCircu
      
 OPERATIONS
-     ordreEnclenchementPompeAlimentation =
-     
-     BEGIN
-         activerPompeAlim
-     END
-     
-         
-     
-
     
+     // pompe Alimentation
+     ordreEnclenchementPompeAlimentation = 
+         activerPompeAlimentation;
+     
+     ordreDeclenchementPompeAlimentation = 
+         desactiverPompeAlimentation;
+
+
+     // Pompe Circulation
+     verouillageEnclenchementPompeCirculation = 
+     PRE getVanneCircuActive = FALSE // TODO : or RESERVOIR.MIN = FALSE
+     THEN
+          verouillerVanneCircu
+     END;
+     
+     ordreEnclenchementPompeCirculation = 
+     PRE getVanneCircuActive = FALSE // TODO : or RESERVOIR.MIN = FALSE
+     THEN
+          activerPompeCircu
+     END;
+     
+     ordreDeclenchementPompeCirculation = 
+         desactiverPompeCircu
+
+
 END

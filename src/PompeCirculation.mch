@@ -17,6 +17,12 @@ INITIALISATION
     pompeCircuActive := FALSE
    
 OPERATIONS   
+    
+    rr <-- getPompeCircuActive =
+    BEGIN
+        rr := pompeCircuActive
+    END;
+    
     activerPompeCircu =
     PRE pompeCircuActive = FALSE
     THEN
