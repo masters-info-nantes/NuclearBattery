@@ -7,36 +7,36 @@ MACHINE
  
 // SEES PompeCirculation    
     
-CONSTANTS 
-    // Seuils
-    OO4MT1, // bas
-    OO4MT2  // haut   
-
-PROPERTIES 
-      OO4MT1 : INT & OO4MT1 = 50
-    & OO4MT2 : INT & OO4MT2 = 35
-    
 VARIABLES
-    temperature
-    
+    temperature,// Seuils
+    OO4MT // bas
+
+
 INVARIANT
-    temperature : INT & temperature >= OO4MT1 & temperature <= OO4MT2
+    temperature : INT 
+    & OO4MT : BOOL
+    
     
 INITIALISATION
-    temperature := 40
-
+    temperature := 20
+    || OO4MT := FALSE //False = froid OO4MT1 True = chuad OO4MT2
+    
 OPERATIONS
-    /*
-    diminuerTemp = 
-    PRE pompeCircuActive = TRUE
-    THEN
-        temperature := temperature + 1
+    FluideFroid =
+    PRE temperature <= 40 
+    THEN 
+        OO4MT := FALSE
+    END;
+ 
+    FluideChuad =
+    PRE temperature > 100 
+    THEN 
+        OO4MT := TRUE
     END;
     
-    augmenterTemp = 
-    PRE pompeCircuActive = FALSE
-    THEN
-        temperature := temperature - 1        
-    END
-    */
+    rr <-- isFluideChuad =
+    BEGIN
+        rr := OO4MT
+    END;
+
 END

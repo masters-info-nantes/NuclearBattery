@@ -7,23 +7,55 @@ MACHINE
 
 // SEES PompeAlimentation, PompeCirculation
 
-CONSTANTS
-    // Seuils    
+VARIABLES
+    niveau, 
     OO1SN, // bas
     OO2SN  // haut
-    
-PROPERTIES 
-      OO1SN : INT & OO1SN = 70
-    & OO2SN : INT & OO2SN = 130
-   
-VARIABLES
-    niveau
-    
+
 INVARIANT
-    niveau : INT & niveau >= OO1SN & niveau <= OO2SN
+    niveau : INT 
+    & OO1SN : BOOL
+    & OO2SN : BOOL
     
 INITIALISATION
-    niveau := 80   
+    niveau := 80
+    || OO1SN := FALSE //False = ok True = 001SN 0
+    || OO2SN := FALSE //False = ok True = 002SN 0    
     
+OPERATIONS
+    ReservoirMin =
+    PRE niveau <= 20 
+    THEN 
+        OO1SN := TRUE
+    END;
+ 
+    ReservoirPlusMin =
+    PRE niveau > 20
+    THEN 
+        OO1SN := FALSE
+    END;
+
+    ReservoirMax =
+    PRE niveau > 100
+    THEN 
+        OO2SN := TRUE
+    END;
+    
+    ReservoirMoinsMax =
+    PRE niveau > 100
+    THEN 
+        OO2SN := FALSE
+    END;
+    
+    rr <-- isReservoirMin =
+    BEGIN
+        rr := OO1SN
+    END;
+
+    rr <-- isReservoirMax =
+    BEGIN
+        rr := OO2SN
+    END;
+
        
 END
