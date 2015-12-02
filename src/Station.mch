@@ -14,13 +14,16 @@ INCLUDES
     VanneCirculation
     
 VARIABLES
-    DC380HT
+    DC380HT,
+    alarme
     
 INVARIANT
     DC380HT : BOOL
+    & alarme : BOOL
     
 INITIALISATION
     DC380HT := FALSE
+    || alarme := FALSE 
     
 PROMOTES
     activerPompeAlimentation,
@@ -62,7 +65,24 @@ OPERATIONS
      
      // 8
      ordreDeclenchementPompeCirculation = 
-         desactiverPompeCircu
+         desactiverPompeCircu;
 
+     // ALARM Chaud + indisponible
+     L1 =
+     PRE (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChuad = TRUE
+     THEN
+        alarme := TRUE
+     END;
+     
+     L3 =
+     PRE getPompeCircuActive = TRUE & isFluideChuad = FALSE
+     THEN
+        alarme := TRUE
+     END;
 
+     L9 =
+     PRE getPompeCircuActive = FALSE & DC380HT = FALSE
+     THEN
+         setVerrouillageElec
+     END;
 END
