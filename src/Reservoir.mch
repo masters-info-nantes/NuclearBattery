@@ -36,13 +36,13 @@ OPERATIONS
     END;
 
     ReservoirMax =
-    PRE niveau > 100
+    PRE niveau >= 100
     THEN 
         OO2SN := TRUE
     END;
     
     ReservoirMoinsMax =
-    PRE niveau > 100
+    PRE niveau < 100
     THEN 
         OO2SN := FALSE
     END;

@@ -29,7 +29,7 @@ OPERATIONS
     END;
  
     FluideChuad =
-    PRE temperature > 100 
+    PRE temperature >= 100 
     THEN 
         OO4MT := TRUE
     END;

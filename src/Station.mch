@@ -15,16 +15,19 @@ INCLUDES
     
 VARIABLES
     DC380HT,
-    alarme
+    alarmeChaleur,
+    alarmeInondation
     
 INVARIANT
     DC380HT : BOOL
-    & alarme : BOOL
+    & alarmeChaleur  : BOOL
+    & alarmeInondation : BOOL
     
 INITIALISATION
     DC380HT := FALSE
-    || alarme := FALSE 
-    
+    || alarmeChaleur := FALSE 
+    || alarmeInondation := FALSE 
+
 PROMOTES
     activerPompeAlimentation,
     desactiverPompeAlimentation,
@@ -38,6 +41,21 @@ PROMOTES
      
 OPERATIONS
     
+     // 1
+     // ALARM Chaud + indisponible
+     alarmeTropChaud =
+     IF (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChuad = TRUE
+     THEN
+        alarmeChaleur := TRUE
+     END;    
+    
+     // 3
+     excesEau =
+     IF getPompeCircuActive = TRUE & isFluideChuad = FALSE
+     THEN
+        alarmeInondation := TRUE
+     END;    
+    
      // pompe Alimentation
      // 4
      ordreEnclenchementPompeAlimentation = 
@@ -50,15 +68,15 @@ OPERATIONS
 
      // Pompe Circulation
      // 6
-     verouillageEnclenchementPompeCirculation = 
-     PRE getVanneCircuActive = FALSE or isReservoirMin = TRUE
+     verouillageEauEnclenchementPompeCirculation = 
+     IF getVanneCircuActive = FALSE or isReservoirMin = TRUE
      THEN
           verouillerVanneCircu
      END;
      
      // 7
      ordreEnclenchementPompeCirculation = 
-     PRE not DC380HT & not isReservoirMin
+     IF not DC380HT & not isReservoirMin
      THEN
           activerPompeCircu
      END;
@@ -67,21 +85,9 @@ OPERATIONS
      ordreDeclenchementPompeCirculation = 
          desactiverPompeCircu;
 
-     // ALARM Chaud + indisponible
-     L1 =
-     PRE (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChuad = TRUE
-     THEN
-        alarme := TRUE
-     END;
-     
-     L3 =
-     PRE getPompeCircuActive = TRUE & isFluideChuad = FALSE
-     THEN
-        alarme := TRUE
-     END;
-
-     L9 =
-     PRE getPompeCircuActive = FALSE & DC380HT = FALSE
+     // 9
+     verouillageElecEnclenchementPompeCirculation =
+     IF getPompeCircuActive = FALSE & DC380HT = FALSE
      THEN
          setVerrouillageElec
      END;
