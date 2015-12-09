@@ -20,7 +20,9 @@ INITIALISATION
 
 OPERATIONS
     activerPompeAlim =
-        pompeAlimActive := TRUE;
+    BEGIN
+        pompeAlimActive := TRUE
+    END;
     
     rr <-- getTourneurLumineux =
     BEGIN
@@ -28,5 +30,7 @@ OPERATIONS
     END;
     
     desactiverPompeAlim =
-        pompeAlimActive := FALSE;
+    BEGIN
+        pompeAlimActive := FALSE
+    END
 END

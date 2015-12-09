@@ -42,7 +42,7 @@ OPERATIONS
         rr := activerPR
     END;
     
-    rr <-- getpompeCircuIndisponible =
+    rr <-- getPompeCircuIndisponible =
     BEGIN
         rr := pompeCircuIndisponible
     END;

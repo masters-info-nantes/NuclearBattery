@@ -37,6 +37,5 @@ OPERATIONS
     rr <-- isFluideChaud =
     BEGIN
         rr := OO4MT
-    END;
-
+    END
 END

@@ -17,15 +17,16 @@ PROMOTES
 
 OPERATIONS
     activerPompeAlimentation = 
-    PRE getVanneAlimActive = TRUE or getTourneurLumineux = TRUE
-    THEN
+    /*PRE getVanneAlimActive = TRUE or getTourneurLumineux = TRUE
+    THEN*/
+    BEGIN
         activerPompeAlim
     END;
     
     desactiverPompeAlimentation = 
-    PRE getVanneAlimActive = FALSE or getTourneurLumineux = FALSE
-    THEN
+    /*PRE getVanneAlimActive = FALSE or getTourneurLumineux = FALSE
+    THEN*/
+    BEGIN
         desactiverPompeAlim
-    END;
-    
+    END
 END

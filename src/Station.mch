@@ -4,14 +4,10 @@
  */
 MACHINE
     Station
- 
+
 INCLUDES
-    Reservoir, 
-    Fluide, 
-    
     PompeVanneAlimentation,
-    PompeCirculation,
-    VanneCirculation
+    PompeVanneCirculation
     
 VARIABLES
     DC380HT,
@@ -28,38 +24,34 @@ INITIALISATION
     || alarmeChaleur := FALSE 
     || alarmeInondation := FALSE 
 
-PROMOTES
-    activerPompeAlimentation,
-    desactiverPompeAlimentation,
-    
-    activerPompeCircu,
-    desactiverPompeCircu,
-    getVanneCircuActive,
-    verouillerVanneCircu,
-    
-    isReservoirMin
-     
 OPERATIONS
     
      // 1
      // ALARM Chaud + indisponible
-     alarmeTropChaud =
-     IF (getpompeCircuIndisponible = TRUE or isReservoirMin = TRUE) & isFluideChaud = TRUE
-     THEN
-        alarmeChaleur := TRUE
-     END;    
+     alarmeTropChaud =  
+     CHOICE 
+         alarmeChaleur := TRUE
+     OR 
+         skip
+     END;
     
      // 3
      excesEau =
-     IF getPompeCircuActive = TRUE & isFluideChaud = FALSE
-     THEN
-        alarmeInondation := TRUE
-     END;    
+     CHOICE
+         alarmeInondation := TRUE
+     OR
+         skip
+     END;   
     
      // pompe Alimentation
      // 4
      ordreEnclenchementPompeAlimentation = 
-         activerPompeAlimentation;
+     CHOICE
+         activerPompeAlimentation
+     OR
+         skip
+     END;
+     
      
      // 5
      ordreDeclenchementPompeAlimentation = 
@@ -69,26 +61,31 @@ OPERATIONS
      // Pompe Circulation
      // 6
      verouillageEauEnclenchementPompeCirculation = 
-     IF getVanneCircuActive = FALSE or isReservoirMin = TRUE
-     THEN
-          verouillerVanneCircu
+     CHOICE
+         verouillerVanneCircu
+     OR
+         skip
      END;
      
      // 7
      ordreEnclenchementPompeCirculation = 
-     IF not DC380HT & not isReservoirMin
-     THEN
-          activerPompeCircu
+     CHOICE 
+         activerPompeCircu
+     OR
+         skip
      END;
      
      // 8
      ordreDeclenchementPompeCirculation = 
-         desactiverPompeCircu;
+     BEGIN
+         desactiverPompeCircu
+     END;
 
      // 9
      verouillageElecEnclenchementPompeCirculation =
-     IF getPompeCircuActive = FALSE & DC380HT = FALSE
-     THEN
+     CHOICE 
          setVerrouillageElec
-     END;
+     OR
+         skip
+     END
 END

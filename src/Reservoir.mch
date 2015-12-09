@@ -55,7 +55,5 @@ OPERATIONS
     rr <-- isReservoirMax =
     BEGIN
         rr := OO2SN
-    END;
-
-       
+    END
 END
