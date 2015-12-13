@@ -43,7 +43,7 @@ OPERATIONS
          skip
      END;   
     
-     // pompe Alimentation
+     // Pompe Alimentation
      // 4
      ordreEnclenchementPompeAlimentation = 
      CHOICE

@@ -3,14 +3,11 @@
  * Creation date: 18/11/2015
  */
 MACHINE
-    Fluide
- 
-// SEES PompeCirculation    
+    Fluide 
     
 VARIABLES
     temperature,// Seuils
     OO4MT // bas
-
 
 INVARIANT
     temperature : INT 

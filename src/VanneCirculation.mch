@@ -23,17 +23,4 @@ OPERATIONS
     verouillerVanneCircu = 
         vanneCircuActive := FALSE
         
-    /*
-    activerVanneCircu =
-    PRE vanneCircuActive = FALSE
-    THEN
-        vanneCircuActive := TRUE
-    END;
-    
-    desactiverVanneCircu =
-    PRE vanneCircuActive = TRUE
-    THEN
-        vanneCircuActive := FALSE
-    END
-    */
 END

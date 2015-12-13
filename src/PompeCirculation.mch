@@ -5,8 +5,6 @@
 MACHINE
     PompeCirculation
 
-// SEES Reservoir, Fluide
-
 VARIABLES 
     pompeCircuActive,
     pompeCircuIndisponible,
@@ -59,14 +57,12 @@ OPERATIONS
         verrouillageFluide := TRUE;    
     
     activerPompeCircu =
-    PRE pompeCircuActive = FALSE
-    THEN
+    BEGIN
         pompeCircuActive := TRUE
     END;
     
     desactiverPompeCircu =
-    PRE pompeCircuActive = TRUE
-    THEN
+    BEGIN
         pompeCircuActive := FALSE
     END
     

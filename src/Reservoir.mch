@@ -5,8 +5,6 @@
 MACHINE
     Reservoir
 
-// SEES PompeAlimentation, PompeCirculation
-
 VARIABLES
     niveau, 
     OO1SN, // bas
